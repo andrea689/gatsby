@@ -47,6 +47,7 @@ exports.onRenderBody = (
     dataLayerName = `dataLayer`,
     enableWebVitalsTracking = false,
     selfHostedOrigin = `https://www.googletagmanager.com`,
+    usePartytown = false,
   }
 ) => {
   if (process.env.NODE_ENV === `production` || includeInDevelopment) {
@@ -75,6 +76,7 @@ exports.onRenderBody = (
       inlineScripts.push(
         <script
           key={`gatsby-plugin-google-tagmanager-web-vitals`}
+          type={usePartytown ? "text/partytown" : null}
           data-gatsby="web-vitals-polyfill"
           dangerouslySetInnerHTML={{
             __html: `
@@ -88,6 +90,7 @@ exports.onRenderBody = (
     inlineScripts.push(
       <script
         key="plugin-google-tagmanager"
+        type={usePartytown ? "text/partytown" : null}
         dangerouslySetInnerHTML={{
           __html: oneLine`
           ${defaultDataLayerCode}

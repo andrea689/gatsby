@@ -44,4 +44,9 @@ exports.pluginOptionsSchema = ({ Joi }) =>
     selfHostedOrigin: Joi.string()
       .default(`https://www.googletagmanager.com`)
       .description(`The origin where GTM is hosted.`),
+    usePartytown: Joi.boolean()
+        .default(false)
+        .description(
+          `Use Partytown to load script.`
+        ),
   })
